@@ -1,4 +1,4 @@
-export const Card = (): JSX.Element => (
+const Card = (): JSX.Element => (
   <article className="cities__card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
@@ -40,3 +40,5 @@ export const Card = (): JSX.Element => (
     </div>
   </article>
 );
+
+export default Card;

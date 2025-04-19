@@ -1,4 +1,4 @@
-export const Footer = (): JSX.Element => (
+const Footer = (): JSX.Element => (
   <footer className="footer container">
     <a className="footer__logo-link" href="main.html">
       <img
@@ -11,3 +11,5 @@ export const Footer = (): JSX.Element => (
     </a>
   </footer>
 );
+
+export default Footer;

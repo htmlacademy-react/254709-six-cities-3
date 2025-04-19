@@ -1,4 +1,4 @@
-export const Header = (): JSX.Element => (
+const Header = (): JSX.Element => (
   <header className="header">
     <div className="container">
       <div className="header__wrapper">
@@ -38,3 +38,5 @@ export const Header = (): JSX.Element => (
     </div>
   </header>
 );
+
+export default Header;

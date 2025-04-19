@@ -1,11 +1,11 @@
-import { Header } from '../../components/header/header';
-import { Card } from '../../components/card/card';
+import Header from '../../components/header/header';
+import Card from '../../components/card/card';
 
 type MainProps = {
   offersCount: number;
 };
 
-export const Main = ({ offersCount }: MainProps): JSX.Element => (
+const Main = ({ offersCount }: MainProps): JSX.Element => (
   <div className="page page--gray page--main">
     <Header />
 
@@ -96,3 +96,6 @@ export const Main = ({ offersCount }: MainProps): JSX.Element => (
     </main>
   </div>
 );
+
+export default Main;
+

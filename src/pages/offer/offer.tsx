@@ -1,6 +1,6 @@
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
-export const Offers = () => (
+const Offer = () => (
   <div className="page">
     <Header />
 
@@ -430,3 +430,6 @@ export const Offers = () => (
     </main>
   </div>
 );
+
+export default Offer;
+

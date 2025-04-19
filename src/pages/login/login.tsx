@@ -1,6 +1,6 @@
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
-export const Login = (): JSX.Element => (
+const Login = (): JSX.Element => (
   <div className="page page--gray page--login">
     <Header />
 
@@ -45,3 +45,6 @@ export const Login = (): JSX.Element => (
     </main>
   </div>
 );
+
+export default Login;
+

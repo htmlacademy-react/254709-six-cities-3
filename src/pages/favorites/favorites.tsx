@@ -1,7 +1,7 @@
-import { Header } from '../../components/header/header';
-import { Footer } from '../../components/footer/footer';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 
-export const Favorites = (): JSX.Element => (
+const Favorites = (): JSX.Element => (
   <div className="page">
     <Header />
 
@@ -183,3 +183,6 @@ export const Favorites = (): JSX.Element => (
     <Footer />
   </div>
 );
+
+export default Favorites;
+
