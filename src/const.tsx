@@ -1,14 +1,13 @@
-const Setting = {
+export const Setting = {
   OffersCount: 5,
 } as const;
 
-const сities: string[] = [
+export const CITIES: string[] = [
   'Paris',
   'Cologne',
   'Brussels',
   'Amsterdam',
   'Hamburg',
   'Dusseldorf',
-]
+];
 
-export { Setting, Cities };
