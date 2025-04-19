@@ -2,4 +2,13 @@ const Setting = {
   OffersCount: 5,
 } as const;
 
-export { Setting };
+const сities: string[] = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+]
+
+export { Setting, Cities };

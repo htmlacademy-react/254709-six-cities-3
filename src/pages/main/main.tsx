@@ -1,5 +1,6 @@
 import Header from '../../components/header/header';
 import Card from '../../components/card/card';
+import { сities } from '../../const';
 
 type MainProps = {
   offersCount: number;
@@ -14,36 +15,13 @@ const Main = ({ offersCount }: MainProps): JSX.Element => (
       <div className="tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
+            {сities.map((city) => (
+              <li className="locations__item" key={city}>
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>{city}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
@@ -98,4 +76,3 @@ const Main = ({ offersCount }: MainProps): JSX.Element => (
 );
 
 export default Main;
-
