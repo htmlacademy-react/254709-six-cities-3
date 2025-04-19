@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
 import Card from '../../components/card/card';
-import { CITIES } from '../../const';
+import NavItem from '../../components/nav-item/nav-item';
 
 type MainProps = {
   offersCount: number;
@@ -12,19 +12,8 @@ const Main = ({ offersCount }: MainProps): JSX.Element => (
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            {CITIES.map((city) => (
-              <li className="locations__item" key={city}>
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>{city}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+      <NavItem />
+
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">

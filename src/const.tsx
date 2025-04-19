@@ -2,7 +2,7 @@ export const Setting = {
   OffersCount: 5,
 } as const;
 
-export const CITIES: string[] = [
+export const cities: string[] = [
   'Paris',
   'Cologne',
   'Brussels',
