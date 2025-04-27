@@ -1,4 +1,3 @@
-import Header from '../../components/header/header';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,7 +6,6 @@ const Login = (): JSX.Element => (
     <Helmet>
       <title>6 cities: authorization</title>
     </Helmet>
-    <Header />
 
     <main className="page__main page__main--login">
       <div className="page__login-container container">

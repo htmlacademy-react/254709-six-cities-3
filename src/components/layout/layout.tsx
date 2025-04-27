@@ -1,0 +1,71 @@
+import { Outlet, useLocation, Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import Logo from '../logo/logo';
+
+type PathNameType = string;
+
+const getLayoutState = (pathname: PathNameType) => {
+  let mainClassName = '';
+  let linkClassName = '';
+  let shouldRenderUser = true;
+
+  if (pathname === AppRoute.Main) {
+    mainClassName = 'page page--gray page--main';
+    linkClassName = 'header__logo-link header__logo-link--active';
+  } else if (pathname === AppRoute.Login) {
+    mainClassName = 'page page--gray page--login';
+    linkClassName = 'header__logo-link';
+    shouldRenderUser = false;
+  } else if (pathname === AppRoute.Offer || pathname === AppRoute.Favorites) {
+    mainClassName = 'page';
+    linkClassName = 'header__logo-link';
+  }
+
+  return { mainClassName, linkClassName, shouldRenderUser };
+};
+
+const Layout = (): JSX.Element => {
+  const { pathname } = useLocation();
+  const { mainClassName, linkClassName, shouldRenderUser } = getLayoutState(pathname);
+  return (
+    <div className={mainClassName}>
+      <header className="header">
+        <div className="container">
+          <div className="header__wrapper">
+            <div className="header__left">
+              <Logo logoClassName = {linkClassName}/>
+            </div>
+            {shouldRenderUser ? (
+              <nav className="header__nav">
+                <ul className="header__nav-list">
+                  <li className="header__nav-item user">
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to="#"
+                    >
+                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                      <span className="header__user-name user__name">
+                        Oliver.conner@gmail.com
+                      </span>
+                      <div className="header__favorite-count">
+                        3
+                      </div>
+                    </Link>
+                  </li>
+                  <li className="header__nav-item">
+                    <Link className="header__nav-link" to="#">
+                      <span className="header__signout">Sign out</span>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            ) : null}
+          </div>
+        </div>
+      </header>
+      <Outlet />
+    </div>
+  );
+};
+
+export default Layout;

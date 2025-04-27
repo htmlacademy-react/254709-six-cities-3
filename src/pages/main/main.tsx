@@ -1,4 +1,3 @@
-import Header from '../../components/header/header';
 import Card from '../../components/card/card';
 import NavItem from '../../components/nav-item/nav-item';
 import { Helmet } from 'react-helmet-async';
@@ -12,7 +11,6 @@ const Main = ({ offersCount }: MainProps): JSX.Element => (
     <Helmet>
       <title>6 cities</title>
     </Helmet>
-    <Header />
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
