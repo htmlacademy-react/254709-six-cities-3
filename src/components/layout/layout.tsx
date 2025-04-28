@@ -57,7 +57,7 @@ const Layout = ({ authorizationStatus }: LayoutProps): JSX.Element => {
                       </Link>
                     </li>
                     <li className="header__nav-item">
-                      <a className="header__nav-link" to="#">
+                      <a className="header__nav-link" href="#">
                         <span className="header__signout">Sign out</span>
                       </a>
                     </li>
