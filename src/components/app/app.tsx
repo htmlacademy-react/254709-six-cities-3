@@ -13,20 +13,22 @@ type AppProps = {
   offersCount: number;
 };
 
+const currentAuthorizationStatus = AuthorizationStatus.Auth;
+
 const App = ({ offersCount }: AppProps): JSX.Element => (
   <HelmetProvider>
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Layout />}
+          element={<Layout authorizationStatus={currentAuthorizationStatus}/>}
         >
           <Route index element={<Main offersCount={offersCount} />} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <PrivateRoute authorizationStatus={currentAuthorizationStatus}>
                 <Favorites />
               </PrivateRoute>
             }

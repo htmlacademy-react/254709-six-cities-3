@@ -1,8 +1,11 @@
 import { Outlet, useLocation, Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import Logo from '../logo/logo';
 
 type PathNameType = string;
+type LayoutProps = {
+  authorizationStatus: typeof AuthorizationStatus[keyof typeof AuthorizationStatus];
+};
 
 const getLayoutState = (pathname: PathNameType) => {
   let mainClassName = '';
@@ -24,42 +27,56 @@ const getLayoutState = (pathname: PathNameType) => {
   return { mainClassName, linkClassName, shouldRenderUser };
 };
 
-const Layout = (): JSX.Element => {
+const Layout = ({ authorizationStatus }: LayoutProps): JSX.Element => {
   const { pathname } = useLocation();
-  const { mainClassName, linkClassName, shouldRenderUser } = getLayoutState(pathname);
+  const { mainClassName, linkClassName, shouldRenderUser } =
+    getLayoutState(pathname);
+
   return (
     <div className={mainClassName}>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo logoClassName = {linkClassName}/>
+              <Logo logoClassName={linkClassName} />
             </div>
-            {shouldRenderUser ? (
+            {shouldRenderUser && (
               <nav className="header__nav">
-                <ul className="header__nav-list">
-                  <li className="header__nav-item user">
-                    <Link
-                      className="header__nav-link header__nav-link--profile"
-                      to="#"
-                    >
-                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                      <span className="header__user-name user__name">
-                        Oliver.conner@gmail.com
-                      </span>
-                      <div className="header__favorite-count">
-                        3
-                      </div>
-                    </Link>
-                  </li>
-                  <li className="header__nav-item">
-                    <Link className="header__nav-link" to="#">
-                      <span className="header__signout">Sign out</span>
-                    </Link>
-                  </li>
-                </ul>
+                {authorizationStatus === AuthorizationStatus.Auth ? (
+                  <ul className="header__nav-list">
+                    <li className="header__nav-item user">
+                      <Link
+                        className="header__nav-link header__nav-link--profile"
+                        to="#"
+                      >
+                        <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                        <span className="header__user-name user__name">
+                          Oliver.conner@gmail.com
+                        </span>
+                        <div className="header__favorite-count">3</div>
+                      </Link>
+                    </li>
+                    <li className="header__nav-item">
+                      <Link className="header__nav-link" to="#">
+                        <span className="header__signout">Sign out</span>
+                      </Link>
+                    </li>
+                  </ul>
+                ) : (
+                  <ul className="header__nav-list">
+                    <li className="header__nav-item user">
+                      <Link
+                        className="header__nav-link header__nav-link--profile"
+                        to={AppRoute.Login}
+                      >
+                        <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                        <span className="header__login">Sign in</span>
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </nav>
-            ) : null}
+            )}
           </div>
         </div>
       </header>
