@@ -11,24 +11,23 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
   offersCount: number;
+  authorizationStatus: typeof AuthorizationStatus[keyof typeof AuthorizationStatus];
 };
 
-const currentAuthorizationStatus = AuthorizationStatus.Auth;
-
-const App = ({ offersCount }: AppProps): JSX.Element => (
+const App = ({ offersCount, authorizationStatus }: AppProps): JSX.Element => (
   <HelmetProvider>
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Layout authorizationStatus={currentAuthorizationStatus}/>}
+          element={<Layout authorizationStatus={authorizationStatus}/>}
         >
           <Route index element={<Main offersCount={offersCount} />} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={currentAuthorizationStatus}>
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <Favorites />
               </PrivateRoute>
             }
