@@ -10,6 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offersCount={Setting.OffersCount} authorizationStatus={AuthorizationStatus.NoAuth}/>
+    <App offersCount={Setting.OffersCount} authorizationStatus={AuthorizationStatus.Auth}/>
   </React.StrictMode>
 );

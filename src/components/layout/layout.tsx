@@ -47,7 +47,7 @@ const Layout = ({ authorizationStatus }: LayoutProps): JSX.Element => {
                     <li className="header__nav-item user">
                       <Link
                         className="header__nav-link header__nav-link--profile"
-                        to="#"
+                        to={AppRoute.Favorites}
                       >
                         <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                         <span className="header__user-name user__name">
@@ -57,9 +57,9 @@ const Layout = ({ authorizationStatus }: LayoutProps): JSX.Element => {
                       </Link>
                     </li>
                     <li className="header__nav-item">
-                      <Link className="header__nav-link" to="#">
+                      <a className="header__nav-link" to="#">
                         <span className="header__signout">Sign out</span>
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 ) : (
