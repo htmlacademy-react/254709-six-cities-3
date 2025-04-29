@@ -1,6 +1,6 @@
-import Header from '../../components/header/header';
 import Card from '../../components/card/card';
 import NavItem from '../../components/nav-item/nav-item';
+import { Helmet } from 'react-helmet-async';
 
 type MainProps = {
   offersCount: number;
@@ -8,10 +8,13 @@ type MainProps = {
 
 const Main = ({ offersCount }: MainProps): JSX.Element => (
   <div className="page page--gray page--main">
-    <Header />
+    <Helmet>
+      <title>6 cities</title>
+    </Helmet>
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
+
       <NavItem />
 
       <div className="cities">
@@ -48,11 +51,13 @@ const Main = ({ offersCount }: MainProps): JSX.Element => (
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
+
               <Card />
               <Card />
               <Card />
               <Card />
               <Card />
+
             </div>
           </section>
           <div className="cities__right-section">
