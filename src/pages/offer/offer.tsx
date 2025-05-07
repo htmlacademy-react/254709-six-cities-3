@@ -4,7 +4,7 @@ import ReviewList from '../../components/review-list/review-list';
 import { AuthorizationStatus } from '../../const';
 import { OffersType } from '../../mocks/offers';
 import { ReviewsType } from '../../mocks/reviews';
-import { calculateRating } from '../../util';
+import { calculateRating } from '../../utils';
 
 type OfferProps = {
   authorizationStatus: (typeof AuthorizationStatus)[keyof typeof AuthorizationStatus];

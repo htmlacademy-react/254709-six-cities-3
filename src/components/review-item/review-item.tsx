@@ -1,5 +1,6 @@
 import { ReviewType } from '../../mocks/reviews';
-import { calculateRating } from '../../util';
+import { calculateRating } from '../../utils';
+import { getHumanDate } from '../../utils';
 
 type ReviewItemProps = {
   review: ReviewType;
@@ -31,8 +32,8 @@ const ReviewItem = ({ review }: ReviewItemProps): JSX.Element => {
         <p className="reviews__text">
           {comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">
-          {date}
+        <time className="reviews__time" dateTime={getHumanDate(date).dateTime}>
+          {getHumanDate(date).monthYear}
         </time>
       </div>
     </li>

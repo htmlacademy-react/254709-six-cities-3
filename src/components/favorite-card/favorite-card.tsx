@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { OfferType } from '../../mocks/offers';
-import { calculateRating } from '../../util';
+import { calculateRating } from '../../utils';
 import { AppRoute } from '../../const';
 
 type PlaceCardProps = {
