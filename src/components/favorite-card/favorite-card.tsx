@@ -1,61 +1,42 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
 import { OfferType } from '../../mocks/offers';
 import { calculateRating } from '../../util';
+import { AppRoute } from '../../const';
 
-type CardProps = {
+type PlaceCardProps = {
   offer: OfferType;
-  handleHover: (offer?: OfferType) => void;
 };
 
-const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
-  const {
-    isFavorite,
-    id,
-    isPremium,
-    previewImage,
-    price,
-    rating,
-    title,
-    type,
-  } = offer;
-  const handleMouseOn = () => {
-    handleHover(offer);
-  };
+export const FavoriteCard = ({ offer }: PlaceCardProps) => {
+  const { id, title, type, price, previewImage, isFavorite, isPremium, rating } = offer;
 
-  const handleMouseOff = () => {
-    handleHover();
-  };
   return (
-    <article
-      className="cities__card place-card"
-      onMouseEnter={handleMouseOn}
-      onMouseLeave={handleMouseOff}
-    >
+    <article className='favorites__card place-card'>
       {isPremium && (
-        <div className="place-card__mark">
+        <div className='place-card__mark'>
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className='favorites__image-wrapper place-card__image-wrapper'>
         <Link to={`${AppRoute.Offer}/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
-            width="260"
-            height="200"
-            alt="Place image"
+            width='150 : 260'
+            height='110 : 200'
+            alt={title}
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={'favorites__card-info place-card__info'}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button button ${isFavorite && 'place-card__bookmark-button--active'}`}
+            className={`place-card__bookmark-button ${isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
+            type="button"
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
@@ -67,17 +48,15 @@ const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${calculateRating(rating)}` }} />
+            <span style={{ width: `${calculateRating(rating)}` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`${AppRoute.Offer}/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
       </div>
     </article>
   );
 };
-
-export default Card;
