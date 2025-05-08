@@ -1,6 +1,8 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { OffersType } from '../../mocks/offers';
+import { ReviewsType } from '../../mocks/reviews';
 import Layout from '../layout/layout';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -10,11 +12,12 @@ import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  offersCount: number;
   authorizationStatus: typeof AuthorizationStatus[keyof typeof AuthorizationStatus];
+  offers: OffersType;
+  reviews: ReviewsType;
 };
 
-const App = ({ offersCount, authorizationStatus }: AppProps): JSX.Element => (
+const App = ({ authorizationStatus, offers, reviews }: AppProps): JSX.Element => (
   <HelmetProvider>
     <BrowserRouter>
       <Routes>
@@ -22,17 +25,17 @@ const App = ({ offersCount, authorizationStatus }: AppProps): JSX.Element => (
           path={AppRoute.Main}
           element={<Layout authorizationStatus={authorizationStatus}/>}
         >
-          <Route index element={<Main offersCount={offersCount} />} />
+          <Route index element={<Main offers={offers}/>} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route
             path={AppRoute.Favorites}
             element={
               <PrivateRoute authorizationStatus={authorizationStatus}>
-                <Favorites />
+                <Favorites favoriteOffers = {offers.filter((offer) => offer.isFavorite === true)}/>
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Offer} element={<Offer />} />
+          <Route path={`${AppRoute.Offer}/:id`} element={<Offer authorizationStatus={authorizationStatus} offers={offers} reviews={reviews}/>} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
