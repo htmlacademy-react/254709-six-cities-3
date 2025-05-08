@@ -7,9 +7,7 @@ import { Nullable } from 'vitest';
 type OfferSectionProps = {
   offers: OffersType;
 };
-const OfferSection = ({
-  offers,
-}: OfferSectionProps): JSX.Element => {
+const OfferSection = ({ offers }: OfferSectionProps): JSX.Element => {
   const [, setActiveOffer] = useState<Nullable<OfferType>>(null);
 
   const handleHover = (offer?: OfferType) => {
