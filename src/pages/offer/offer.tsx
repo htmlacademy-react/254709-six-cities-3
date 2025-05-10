@@ -2,19 +2,22 @@ import { useParams } from 'react-router-dom';
 import NotFound from '../not-found/not-found';
 import ReviewList from '../../components/review-list/review-list';
 import { AuthorizationStatus } from '../../const';
-import { OffersType } from '../../mocks/offers';
+import { OffersType, OfferType } from '../../mocks/offers';
 import { ReviewsType } from '../../mocks/reviews';
 import { calculateRating } from '../../utils';
 import Map from '../../components/map/map';
-import Card from '../../components/card/card';
+import NearPlaces from '../../components/near-places/near-paces';
+import { Nullable } from 'vitest';
 
 type OfferProps = {
   authorizationStatus: (typeof AuthorizationStatus)[keyof typeof AuthorizationStatus];
   offers: OffersType;
   reviews: ReviewsType;
+  activeOffer: Nullable<OfferType>;
+  handleActiveOfferChange: (offer?: OfferType) => void;
 };
 
-const Offer = ({ authorizationStatus, offers, reviews }: OfferProps) => {
+const Offer = ({ authorizationStatus, offers, reviews, activeOffer, handleActiveOfferChange }: OfferProps) => {
   const id = useParams().id;
   const currentOffer = offers.find((offer) => offer.id === id);
   if (!currentOffer) {
@@ -170,22 +173,14 @@ const Offer = ({ authorizationStatus, offers, reviews }: OfferProps) => {
               />
             </div>
           </div>
-          <Map className="offer__map" offers={neighbourhoodOffers} />
+          <Map
+            className="offer__map"
+            offers={neighbourhoodOffers}
+            activeOffer={activeOffer}
+          />
         </section>
         <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">
-              Other places in the neighbourhood
-            </h2>
-            <div className="near-places__list places__list">
-              {neighbourhoodOffers.map((offer) => (
-                <Card
-                  key={offer.id}
-                  offer={offer}
-                />
-              ))}
-            </div>
-          </section>
+          <NearPlaces offers={neighbourhoodOffers} onActiveOfferChange={handleActiveOfferChange}/>
         </div>
       </main>
     </div>
