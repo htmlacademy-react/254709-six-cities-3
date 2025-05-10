@@ -8,10 +8,10 @@ type UseMapType = {
 }
 
 function useMap({mapRef, city}: UseMapType) {
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<leaflet.Map | null>(null);
   const isRenderedRef = useRef(false);
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
+    if (mapRef.current !== null && !isRenderedRef.current && city) {
       const instance = leaflet.map(mapRef.current, {
         center: {
           lat: city.location.latitude,
