@@ -9,6 +9,7 @@ type FavoritesProps = {
 
 const Favorites = ({ favoriteOffers }: FavoritesProps): JSX.Element => (
   <div className="page">
+
     <Helmet>
       <title>6 cities: favorites</title>
     </Helmet>

@@ -21,7 +21,6 @@ export const FavoriteList = ({ favoriteOffers }: FavoriteListProps): JSX.Element
     }, {} as OffersByCityType);
 
   const cities = Object.keys(offersByCity);
-
   return (
     <ul className="favorites__list">
       {cities.map((cityName) => (
