@@ -1,5 +1,5 @@
-import { FavoriteCard } from '../favorite-card/favorite-card';
 import { OffersType } from '../../mocks/offers';
+import Card from '../card/card';
 
 
 type FavoriteItemProps = {
@@ -18,9 +18,10 @@ export const FavoriteItem = ({ cityName, offers }: FavoriteItemProps) => (
     </div>
     <div className="favorites__places">
       {offers.map((offer) => (
-        <FavoriteCard
+        <Card
           key={offer.id}
           offer={offer}
+          isFavoritePage
         />
       ))}
     </div>

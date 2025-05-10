@@ -1,14 +1,20 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { OfferType } from '../../mocks/offers';
 import { calculateRating } from '../../utils';
+import { OfferType } from '../../mocks/offers';
+import cn from 'classnames';
 
 type CardProps = {
   offer: OfferType;
-  handleHover: (offer?: OfferType) => void;
+  handleHover?: (offer?: OfferType) => void;
+  isFavoritePage?: boolean;
 };
 
-const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
+const Card = ({
+  offer,
+  handleHover,
+  isFavoritePage,
+}: CardProps): JSX.Element => {
   const {
     isFavorite,
     id,
@@ -19,16 +25,17 @@ const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
     title,
     type,
   } = offer;
-  const handleMouseOn = () => {
-    handleHover(offer);
-  };
 
-  const handleMouseOff = () => {
-    handleHover();
-  };
+  const handleMouseOn = () => handleHover && handleHover(offer);
+  const handleMouseOff = () => handleHover && handleHover();
+
   return (
     <article
-      className="cities__card place-card"
+      className={cn(
+        'place-card',
+        { 'favorites__card': isFavoritePage },
+        { 'cities__card': !isFavoritePage }
+      )}
       onMouseEnter={handleMouseOn}
       onMouseLeave={handleMouseOff}
     >
@@ -37,25 +44,37 @@ const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div
+        className={cn(
+          'place-card__image-wrapper',
+          { 'favorites__image-wrapper': isFavoritePage },
+          { 'cities__image-wrapper': !isFavoritePage }
+        )}
+      >
         <Link to={`${AppRoute.Offer}/${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
-            width="260"
-            height="200"
-            alt="Place image"
+            width={isFavoritePage ? 150 : 260}
+            height={isFavoritePage ? 110 : 200}
+            alt={title}
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div
+        className={`${
+          isFavoritePage && 'favorites__card-info'
+        } place-card__info`}
+      >
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button button ${isFavorite && 'place-card__bookmark-button--active'}`}
+            className={`place-card__bookmark-button button ${
+              isFavorite && 'place-card__bookmark-button--active'
+            }`}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
@@ -74,7 +93,9 @@ const Card = ({ offer, handleHover }: CardProps): JSX.Element => {
         <h2 className="place-card__name">
           <a href="#">{title}</a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">
+          {type.charAt(0).toUpperCase() + type.slice(1)}
+        </p>
       </div>
     </article>
   );

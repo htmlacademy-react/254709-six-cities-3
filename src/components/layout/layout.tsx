@@ -29,8 +29,7 @@ const getLayoutState = (pathname: PathNameType) => {
 
 const Layout = ({ authorizationStatus }: LayoutProps): JSX.Element => {
   const { pathname } = useLocation();
-  const { mainClassName, linkClassName, shouldRenderUser } =
-    getLayoutState(pathname);
+  const { mainClassName, linkClassName, shouldRenderUser } = getLayoutState(pathname);
 
   return (
     <div className={mainClassName}>
