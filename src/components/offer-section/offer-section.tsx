@@ -2,7 +2,7 @@ import { OfferType, OffersType } from '../../types/offers';
 import Card from '../card/card';
 import { useAppSelector } from '../../store';
 import { sortingOptions } from '../../const';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 import { useState, useMemo, useCallback } from 'react';
 import cn from 'classnames';
 

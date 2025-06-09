@@ -3,7 +3,7 @@ import FavoritesMain from '../../components/favorites-main/favorites-main';
 import FavoritesEmpty from '../../components/favorites-empty/favorites-empty';
 import { Helmet } from 'react-helmet-async';
 import { useAppSelector } from '../../store';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 import { memo, useMemo } from 'react';
 import cn from 'classnames';
 

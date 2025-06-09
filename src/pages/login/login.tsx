@@ -9,11 +9,11 @@ import {
   useMemo,
   memo,
 } from 'react';
-import { loginUser } from '../../store/thunk/authThunk';
+import { loginUser } from '../../store/thunk/auth-thunk';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { userSelectors } from '../../selectors/userSelectors';
+import { userSelectors } from '../../selectors/user-selectors';
 import { AuthorizationStatus, AppRoute, Cities } from '../../const';
-import { setCity } from '../../store/slices/offersSlice';
+import { setCity } from '../../store/slices/offers-slice';
 
 type FromState = {
   from?: Location;

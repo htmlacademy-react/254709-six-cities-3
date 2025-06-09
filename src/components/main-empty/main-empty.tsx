@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../store';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 
 export const MainEmpty = (): JSX.Element => {
   const currentCity = useAppSelector(offersSelectors.selectCity);

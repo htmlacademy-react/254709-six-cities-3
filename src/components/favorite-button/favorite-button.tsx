@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { memo, useCallback, useMemo } from 'react';
 import { useAppSelector } from '../../store';
 import { AuthorizationStatus, AppRoute } from '../../const';
-import { userSelectors } from '../../selectors/userSelectors';
+import { userSelectors } from '../../selectors/user-selectors';
 import { useNavigate } from 'react-router-dom';
 import { CARD_ICON_WIDTH, CARD_ICON_HEIGHT, OFFER_ICON_WIDTH, OFFER_ICON_HEIGHT } from '../../const';
 

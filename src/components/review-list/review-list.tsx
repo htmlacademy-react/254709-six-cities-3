@@ -3,7 +3,7 @@ import ReviewForm from '../review-form/review-form';
 import { AuthorizationStatus } from '../../const';
 import { ReviewsType } from '../../types/reviews';
 import { useAppSelector } from '../../store';
-import { userSelectors } from '../../selectors/userSelectors';
+import { userSelectors } from '../../selectors/user-selectors';
 import { useMemo } from 'react';
 import { MAX_REVIEWS_COUNT } from '../../const';
 

@@ -7,8 +7,8 @@ import {
   fetchNearbyOffers,
   fetchComments,
   sendComment,
-} from '../thunk/offerDetailThunk';
-import { toggleFavoriteStatus } from '../thunk/offersThunk';
+} from '../thunk/offer-detail-thunk';
+import { toggleFavoriteStatus } from '../thunk/offers-thunk';
 
 const initialState: OfferDetailStateType = {
   offer: null,

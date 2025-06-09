@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import './not-found.css';
 
 const NotFound = (): JSX.Element => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
   useEffect(() => {
-    const canvas = document.getElementById(
-      'matrix-canvas'
-    ) as HTMLCanvasElement;
+    const canvas = canvasRef.current;
     if (!canvas) {
       return;
     }
@@ -32,7 +33,7 @@ const NotFound = (): JSX.Element => {
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$+-*/=%"\'#&_(),.;:?!\\|{}<>[]^~';
 
     function draw() {
-      if (ctx) {
+      if (ctx && canvas) {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = '#0F0';
@@ -68,8 +69,8 @@ const NotFound = (): JSX.Element => {
   return (
     <div className="page page--gray page--not-found">
       <main className="page__main page__main--not-found">
-        <Helmet><title>Page not found</title></Helmet>;
-        <canvas id="matrix-canvas" className="matrix-canvas"></canvas>
+        <Helmet><title>Page not found</title></Helmet>
+        <canvas ref={canvasRef} className="matrix-canvas"></canvas>
         <div className="not-found-content">
           <div className="not-found-box">
             <h1 className="not-found-title">404</h1>

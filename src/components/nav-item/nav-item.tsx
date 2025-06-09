@@ -1,8 +1,8 @@
 import { Cities } from '../../const';
 import CityItem from '../city-item/city-item';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { offersSelectors } from '../../selectors/offersSelectors';
-import { setCity } from '../../store/slices/offersSlice';
+import { offersSelectors } from '../../selectors/offers-selectors';
+import { setCity } from '../../store/slices/offers-slice';
 import { useCallback } from 'react';
 
 type CityName = (typeof Cities)[number];

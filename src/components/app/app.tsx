@@ -11,13 +11,13 @@ import PrivateRoute from '../private-route/private-route';
 import {
   fetchAllOffers,
   fetchFavoriteOffers,
-} from '../../store/thunk/offersThunk';
+} from '../../store/thunk/offers-thunk';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { RequestStatus } from '../../const';
 import { useEffect } from 'react';
-import { offersSelectors } from '../../selectors/offersSelectors';
-import { userSelectors } from '../../selectors/userSelectors';
-import { checkAuthStatus } from '../../store/thunk/authThunk';
+import { offersSelectors } from '../../selectors/offers-selectors';
+import { userSelectors } from '../../selectors/user-selectors';
+import { checkAuthStatus } from '../../store/thunk/auth-thunk';
 import { getToken } from '../../services/token';
 
 const App = (): JSX.Element => {

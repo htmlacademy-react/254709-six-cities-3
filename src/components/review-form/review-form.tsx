@@ -6,7 +6,7 @@ import {
   useCallback,
 } from 'react';
 import { rating } from '../../const';
-import { sendComment } from '../../store/thunk/offerDetailThunk';
+import { sendComment } from '../../store/thunk/offer-detail-thunk';
 import { useAppDispatch } from '../../store';
 import { useParams } from 'react-router-dom';
 import { MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH } from '../../const';

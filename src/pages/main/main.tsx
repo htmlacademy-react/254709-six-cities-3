@@ -6,7 +6,7 @@ import { useAppSelector } from '../../store';
 import { useState, useCallback, useMemo, memo } from 'react';
 import { Nullable } from 'vitest';
 import type { OfferType } from '../../types/offers';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 import { RequestStatus } from '../../const';
 import Spinner from '../../components/spinner/spinner';
 import { MainEmpty } from '../../components/main-empty/main-empty';

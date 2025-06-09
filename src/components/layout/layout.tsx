@@ -1,10 +1,10 @@
 import { Outlet, useLocation, Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector, useAppDispatch } from '../../store';
-import { userSelectors } from '../../selectors/userSelectors';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { userSelectors } from '../../selectors/user-selectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 import Logo from '../logo/logo';
-import { logoutUser } from '../../store/thunk/authThunk';
+import { logoutUser } from '../../store/thunk/auth-thunk';
 import { useCallback } from 'react';
 
 type PathNameType = string;

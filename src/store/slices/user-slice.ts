@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AuthorizationStatus } from '../../const';
 import type { UserStateType, AuthorizationStatusType } from '../../types/user';
-import { checkAuthStatus, loginUser, logoutUser } from '../thunk/authThunk';
+import { checkAuthStatus, loginUser, logoutUser } from '../thunk/auth-thunk';
 
 const initialState: UserStateType = {
   authorizationStatus: AuthorizationStatus.Unknown,

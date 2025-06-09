@@ -9,12 +9,12 @@ import { MAX_NEARBY_OFFERS_ON_MAP } from '../../const';
 
 import { useAppSelector, useAppDispatch } from '../../store';
 import { useEffect, useMemo } from 'react';
-import { offerDetailSelectors } from '../../selectors/offerDetailSelectors';
+import { offerDetailSelectors } from '../../selectors/offer-detail-selectors';
 import {
   fetchOfferDetail,
   fetchNearbyOffers,
   fetchComments,
-} from '../../store/thunk/offerDetailThunk';
+} from '../../store/thunk/offer-detail-thunk';
 import { RequestStatus } from '../../const';
 import Spinner from '../../components/spinner/spinner';
 import FavoriteButton from '../../components/favorite-button/favorite-button';

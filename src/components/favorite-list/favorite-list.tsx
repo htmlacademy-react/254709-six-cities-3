@@ -1,6 +1,6 @@
 import { FavoriteItem } from '../favorite-item/favorite-item';
 import { useAppSelector } from '../../store';
-import { offersSelectors } from '../../selectors/offersSelectors';
+import { offersSelectors } from '../../selectors/offers-selectors';
 import type { OffersType } from '../../types/offers';
 import { useMemo } from 'react';
 

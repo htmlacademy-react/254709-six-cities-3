@@ -1,5 +1,5 @@
 import { AppDispatch } from './types/store';
-import { toggleFavoriteStatus } from './store/thunk/offersThunk';
+import { toggleFavoriteStatus } from './store/thunk/offers-thunk';
 
 export const calculateRating = (rating: number): string => {
   const percentage = Math.round(rating) / 5 * 100;

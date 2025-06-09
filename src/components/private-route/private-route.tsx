@@ -1,7 +1,7 @@
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../store';
-import { userSelectors } from '../../selectors/userSelectors';
+import { userSelectors } from '../../selectors/user-selectors';
 
 
 type PrivateRouteProps = {
